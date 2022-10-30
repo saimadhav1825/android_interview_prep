@@ -31,8 +31,16 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.prepareinterview.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/navigation_dashboard_to_navigation_service"
+            app:destination="@id/navigation_service"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_service"
+        android:name="com.example.prepareinterview.ui.ServicesFragment"
+        android:label="Service"
+        tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.prepareinterview.ui.notifications.NotificationsFragment"

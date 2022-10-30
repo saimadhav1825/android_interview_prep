@@ -11,6 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prepareinterview.R
 import com.example.prepareinterview.databinding.FragmentDashboardBinding
@@ -40,6 +41,9 @@ class DashboardFragment : Fragment() {
         val textView: TextView = binding.textDashboard
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
+        }
+        textView.setOnClickListener {
+            findNavController().navigate(R.id.navigation_dashboard_to_navigation_service)
         }
         /* GlobalScope.launch {
              delay(3000L)
