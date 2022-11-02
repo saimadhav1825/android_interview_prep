@@ -18,6 +18,7 @@ buildscript {
         facebook_version = '12.1.0'
         gms_auth_version = '20.3.0'
         gms_service_version = '4.3.13'
+        work_version = "2.7.1"
     }
     repositories {
         google()

@@ -9,10 +9,10 @@
         android:id="@+id/navigation_home"
         android:name="com.example.prepareinterview.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_leaderboard_to_userProfile"
-            app:destination="@id/userProfile"/>
+            app:destination="@id/userProfile" />
     </fragment>
     <fragment
         android:id="@+id/userProfile"
@@ -20,21 +20,21 @@
         android:label="HomeFragment">
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="www.example.com/user/{userName}"
-            android:autoVerify="true"/>
+            android:autoVerify="true"
+            app:uri="www.example.com/user/{userName}" />
         <argument
             android:name="userName"
-            app:argType="string"/>
+            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.prepareinterview.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/navigation_dashboard_to_navigation_service"
-            app:destination="@id/navigation_service"/>
+            app:destination="@id/navigation_service" />
     </fragment>
     <fragment
         android:id="@+id/navigation_service"
@@ -45,5 +45,15 @@
         android:id="@+id/navigation_notifications"
         android:name="com.example.prepareinterview.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications">
+        <action
+            android:id="@+id/navigation_notifications_sampleWorkManager"
+            app:destination="@id/sampleWorkManager" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sampleWorkManager"
+        android:name="com.example.prepareinterview.ui.SampleWorkManagerWorkFragment"
+        android:label="Work Manager"
+        tools:layout="@layout/sample_workmanager_fragment" />
 </navigation>
