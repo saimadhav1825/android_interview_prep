@@ -54,7 +54,7 @@ class SampleWorkManagerWorkFragment : Fragment() {
 
     //Set Data For WorkManager
     private fun setDataForWorker(): Data {
-        return Data.Builder().putInt(SampleWorkManager.KEY_COUNT, 100000).build()
+        return Data.Builder().putInt(SampleWorkManager.KEY_COUNT, 1000).build()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

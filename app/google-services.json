@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "29415284176",
+    "project_id": "myappprepare",
+    "storage_bucket": "myappprepare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29415284176:android:72ce01fcd73fadf319add5",
+        "android_client_info": {
+          "package_name": "com.example.prepareinterview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29415284176-k6pt40bhlbkvl7at8dvcicqthvpk6u73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCugUMJHaX155RPTZ7RC36BMHuRttfrxxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29415284176-k6pt40bhlbkvl7at8dvcicqthvpk6u73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

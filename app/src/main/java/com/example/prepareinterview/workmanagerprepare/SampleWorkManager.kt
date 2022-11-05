@@ -6,6 +6,10 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SampleWorkManager(context: Context, workerParameters: WorkerParameters) :
     Worker(context, workerParameters) {
@@ -18,8 +22,11 @@ class SampleWorkManager(context: Context, workerParameters: WorkerParameters) :
     override fun doWork(): Result {
         val out = inputData.getString(KEY_COUNT)
         return try {
-            out?.forEach {
-                Log.d(TAG, "Work Manger $it")
+            CoroutineScope(Dispatchers.IO).launch {
+                while (true) {
+                    Log.d(TAG, "Work Manger ")
+                    delay(1000)
+                }
             }
             Result.success(getDataFromWorkResult())
         } catch (e: Exception) {

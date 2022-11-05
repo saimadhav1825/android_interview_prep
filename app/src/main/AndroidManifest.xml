@@ -32,6 +32,13 @@
         <service android:name=".services.SampleBackgroundService"/>
         <service android:name=".services.SampleForeGroundService"/>
         <service android:name=".services.MyBoundService"/>
+        <service
+            android:name=".pushnotifciation.ChatNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
