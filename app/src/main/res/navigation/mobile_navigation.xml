@@ -56,4 +56,15 @@
         android:name="com.example.prepareinterview.ui.SampleWorkManagerWorkFragment"
         android:label="Work Manager"
         tools:layout="@layout/sample_workmanager_fragment" />
+
+    <fragment
+        android:id="@+id/implicitDeeplinkFragment"
+        android:name="com.example.prepareinterview.deeplink.ImplicitDeepLinkFragment"
+        android:label="Work Manager"
+        tools:layout="@layout/sample_workmanager_fragment">
+        <argument android:name="productName" />
+        <deepLink
+            android:id="@+id/deepLink2"
+            app:uri="androidgeek.co/product/{productName}" />
+    </fragment>
 </navigation>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -39,6 +40,10 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val uri = activity?.intent?.data
+        if (uri != null) {
+            Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_LONG).show()
+        }
         getAllEmployees()
         observerData()
         Log.d(msg, "The onCreateView() event")
