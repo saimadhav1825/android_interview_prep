@@ -102,3 +102,87 @@ class KotlinConceptsFragment : Fragment() {
         println(list)
     }
 }
+
+class MainClass {
+    var name: String = ""
+
+    class nestedClass {
+        var nameof: String = "nestedClass"
+        fun nestMethod() {
+            println(nameof)
+        }
+    }
+}
+
+class MainClassOf {
+    var name: String = "MainClassOf"
+
+    inner class innerClass {
+        var nameof: String = "innerClass"
+        fun innerMethod() {
+            println(name)
+            println(nameof)
+        }
+    }
+}
+
+class SetterAndGetter {
+    var pairOf: String = ""
+        get() = field
+        set(value) {
+            field = value
+        }
+}
+
+class PrimaryConstructor(val name: String, val value: String) {
+    init {
+        println(name)
+    }
+
+    constructor(name: String) : this(name, "") {
+        println("This is primary constructor")
+    }
+
+    constructor(name: Int) : this("name", "") {
+
+    }
+
+    init {
+        println("This is first init block")
+    }
+
+    init {
+        println("This is second init block")
+    }
+
+    init {
+        println("This is third init block")
+    }
+
+}
+
+interface StudentInterFace {
+    fun you()
+}
+
+data class Student(val name: String, val roll_no: Int) : StudentInterFace {
+    override fun you() {
+        TODO("Not yet implemented")
+    }
+}
+
+fun main(array: Array<String>) {
+    val mainClass = MainClass.nestedClass()
+    mainClass.nestMethod()
+
+    val mainClassOf = MainClassOf().innerClass()
+    mainClassOf.innerMethod()
+
+    val setterAndGetter = SetterAndGetter()
+    setterAndGetter.pairOf = "SetterAndGetter"
+    println(setterAndGetter.pairOf)
+
+    PrimaryConstructor("jkg")
+    println(Student("sai", 7))
+
+}
