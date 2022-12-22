@@ -1,0 +1,47 @@
+---Coroutine
+
+coroutine will return job object
+Gloabal scope
+1.Gloabal scope will destroy if app destroy
+2.Gloabal scope will run if app when to recent state
+3.Gloabal scope will not destroy if actvity will destroy
+
+suspend function will call only inside coroutine
+
+Dispatcher.Main if we want change ui data
+Dispatcher.Io  if we want call network call,data base and file write and out
+Dispatcher.default for long term operation
+Dispatcher.unconfined for that suspend stay
+
+
+---WithContext---
+if we change data from one coroutine to another coroutine we will use
+EX:
+GlobalScope.launch(Dispatchers.IO) {
+            val network1=network1()
+            Log.d(TAG,"Which Theard ${Thread.currentThread().name}")
+            withContext(Dispatchers.Main){
+                Log.d(TAG,"Which Theard ${Thread.currentThread().name}")
+                textView.text = network1
+            }
+        }
+
+--runBlocking--
+1.runBlocking will stop ui thread execution
+2.we can call coroutine inside runBlocking
+
+withTimeout we can coroutine
+
+async will return the deferred<T>
+await will return the result of that async function what we called
+
+Lifecycle scope is to that particular lifecycle  either fragment or actvity ,if both destroy lifecycle scope will destroy
+
+Coroutine scope is attached to lifecycle
+launchwhencreated
+launchwhenstarted
+launchwhenresumed
+
+
+Coroutine scope is attached to ViewModel
+if viewmodel is cleared viewmodelscope will destroy

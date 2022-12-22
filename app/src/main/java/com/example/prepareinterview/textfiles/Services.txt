@@ -1,0 +1,41 @@
+--------------------------------Services---------------------------------------------
+BackgroundService
+A background service is a service that runs only when the app is running.
+it is terminated when the app is terminated
+
+service is stared with startservice()
+service is stopped with stopserice()
+
+ <service android:name=".services.SampleBackgroundService"/>
+ 
+ForegorundService
+A ForegorundService is a service that stays alive even when the app is terminated
+
+You guys well know after android oreo imposed some implication on service.
+ As per Android Developer team, you can’t perform long-running operations in the background without notifying users. 
+That by we are pass notification object inside the startForeground() method.
+
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<service android:name=".services.SampleForeGroundService"/>
+context?.startForegroundService(intent1)
+ context.stopService(intent1)
+ 
+Bound Service
+A bound service is a service that runs only when the component it is bound to is still alive
+
+
+ Intent(requireContext(), MyBoundService::class.java).also {
+            context?.bindService(it, myBoundServiceConnection, Context.BIND_AUTO_CREATE)
+        }
+		
+private val myBoundServiceConnection = object : ServiceConnection {
+        override fun onServiceConnected(p0: ComponentName?, binder: IBinder?) {
+            val myBoundServiceBinder = binder as MyBoundService.MyServiceBinder
+            myBoundService = myBoundServiceBinder.gerService()
+            isBound = true
+        }
+
+        override fun onServiceDisconnected(p0: ComponentName?) {
+            isBound = false
+        }
+    }

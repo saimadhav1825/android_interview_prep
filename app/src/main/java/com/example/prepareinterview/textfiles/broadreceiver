@@ -1,0 +1,53 @@
+----Broadcast Receiver---
+
+In Android, broadcast refers to system-wide events such as when the device boots up, receives a message, receives incoming calls, or goes into airplane mode, among other things. To respond to these system-wide events, broadcast receivers are employed. Broadcast Receivers allow us to register for system and application events, and the register receivers are alerted when the event occurs.
+
+Types of Broadcast Receiver
+Static Broadcast Receivers: These types of Receivers are declared in the manifest file and works even if the app is closed.
+Dynamic Broadcast Receivers: These types of receivers work only if the app is active or minimized.
+
+ex:
+android.intent.action.BATTERY_LOW
+android.intent.ACTION_AIRPLANE_MODE_CHANGED
+android.intent.action.BOOT_COMPLETED
+code:
+    private lateinit var airplaneMoodReceiver: AirplaneMoodReceiver
+           airplaneMoodReceiver = AirplaneMoodReceiver()
+        IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
+            context?.registerReceiver(airplaneMoodReceiver, it)
+        }
+		
+		 override fun onStop() {
+        super.onStop()
+        context?.unregisterReceiver(airplaneMoodReceiver)
+    }
+	
+class AirplaneMoodReceiver : BroadcastReceiver() {
+    override fun onReceive(p0: Context?, p1: Intent?) {
+        val isAirplaneModeEnabled = p1?.getBooleanExtra("state", false) ?: return
+        if (isAirplaneModeEnabled) {
+            Toast.makeText(p0, "Airplane Mode Enabled", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(p0, "Airplane Mode Disabled", Toast.LENGTH_LONG).show()
+        }
+    }
+}
+
+--SharedPreferences
+SharedPreferences is the common way used for storing key-value pairs in local storage. We have been using the SharedPreferences concept since the start of Android development.
+ As we are migrating to the latest programming languages like Kotlin there needs to be an advancement in terms of dealing with SharedPreferences.
+ Disadvantages of SharedPreferences
+ 1,They are not safe to call on UI thread although as they have asynchronous API that can appear to be safe to call on the UI thread,
+ but which actually does disk I/O operations that might cause issues.
+2.It’s not safe from runtime exceptions as they throw parsing errors
+3.Cannot signal errors
+4.It doesn’t provide Type-safety
+
+DataStore
+DataStore is an advanced data storage solution provided by Jetpack in order to replace SharedPreferences. It was built using Kotlin coroutines and Flow to store data asynchronously, consistently, and transactionally.
+
+There are two ways of implementations using DataStore:
+
+Preferences DataStore: Stores data in key-value pairs similar to Shared Preferences. It doesn’t provide any type-safety. No predefined schema is required.
+
+Proto DataStore: Stores data as instances of a custom data type with predefined schema using Protocol buffers. It provides type-safety.

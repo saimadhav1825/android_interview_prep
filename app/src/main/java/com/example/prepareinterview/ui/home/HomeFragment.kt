@@ -6,24 +6,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.prepareinterview.R
+import androidx.lifecycle.lifecycleScope
 import com.example.prepareinterview.adapters.MyAdapter
 import com.example.prepareinterview.databinding.FragmentHomeBinding
 import com.example.prepareinterview.retorfitwithhilt.AuthStateEvent
 import com.example.prepareinterview.retorfitwithhilt.DataState
-import com.example.prepareinterview.retorfitwithhilt.Employee
 import com.example.prepareinterview.retorfitwithhilt.SampleViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -40,52 +33,127 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val uri = activity?.intent?.data
-        if (uri != null) {
-            Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_LONG).show()
-        }
-        getAllEmployees()
-        observerData()
+        //deeplink
+        /*  val uri = activity?.intent?.data
+          if (uri != null) {
+              Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_LONG).show()
+          }*/
         Log.d(msg, "The onCreateView() event")
+        //globalScopeSample()
+        //launchSample()
+        //asyncAwait()
+        runBlockingSample()
         return root
     }
 
-    private fun getAllEmployees() {
+    /*  private fun getAllEmployees() {
+          sampleViewModel.setStateEvent(AuthStateEvent.LoginUser)
+      }
 
-        sampleViewModel.setStateEvent(AuthStateEvent.LoginUser)
-    }
+      private fun observerData() {
+          sampleViewModel.signInData.observe(viewLifecycleOwner) {
+              when (it) {
+                  is DataState.Success -> {
+                      it.data.body()?.data
+                      val viewAdapter = MyAdapter(it.data.body()?.data!!)
 
-    private fun observerData() {
-        sampleViewModel.signInData.observe(viewLifecycleOwner) {
-            when (it) {
-                is DataState.Success -> {
-                    it.data.body()?.data
-                    val viewAdapter = MyAdapter(it.data.body()?.data!!)
+                      binding.leaderboardList.run {
+                          // use this setting to improve performance if you know that changes
+                          // in content do not change the layout size of the RecyclerView
+                          setHasFixedSize(true)
 
-                    binding.leaderboardList.run {
-                        // use this setting to improve performance if you know that changes
-                        // in content do not change the layout size of the RecyclerView
-                        setHasFixedSize(true)
+                          // specify an viewAdapter (see also next example)
+                          adapter = viewAdapter
 
-                        // specify an viewAdapter (see also next example)
-                        adapter = viewAdapter
-
-                    }
-                }
-                is DataState.Loading -> {
-                    //
-                }
-                is DataState.GenericError -> {
-                    //
-                }
-                is DataState.NetworkError -> {
-                    //
-                }
-                else -> {//
-                }
+                      }
+                  }
+                  is DataState.Loading -> {
+                      //
+                  }
+                  is DataState.GenericError -> {
+                      //
+                  }
+                  is DataState.NetworkError -> {
+                      //
+                  }
+                  else -> {//
+                  }
+              }
+          }
+      }*/
+    private fun globalScopeSample() {
+        val out = GlobalScope.launch {
+            /*for (i in 1..10000) {
+                delay(300)
+                Log.d("globalScopeSample", Thread.currentThread().name)
+            }*/
+            while (true) {
+                delay(300)
+                Log.d("globalScopeSample", Thread.currentThread().name)
             }
         }
+        println(out)
     }
+
+    private fun launchSample() {
+        lifecycleScope.launch {
+            val out1 = doNetworkOne()
+            println(out1)
+        }
+        lifecycleScope.launch {
+            val out2 = doNetworkTwo()
+            println(out2)
+        }
+        lifecycleScope.launch {
+            val out3 = doNetworkThree()
+            println(out3)
+        }
+    }
+
+
+    private fun asyncAwait() {
+        lifecycleScope.launch {
+            val out1 = lifecycleScope.async {
+                doNetworkOne()
+            }
+            println(out1.await())
+            val out2 = lifecycleScope.async {
+                doNetworkTwo()
+            }
+            println(out2.await())
+            val out3 = lifecycleScope.async {
+                doNetworkThree()
+            }
+            println(out3.await())
+        }
+    }
+
+    private fun runBlockingSample() {
+        Log.d("runBlocking", "before runblocking")
+        runBlocking {
+            Log.d("runBlocking", "before runblocking check")
+            delay(500)
+            Log.d("runBlocking", "after runblocking check")
+        }
+        Log.d("runBlocking", "after runblocking ")
+    }
+
+    private suspend fun doNetworkOne(): String {
+        delay(300)
+        return "doNetworkOne"
+    }
+
+
+    private suspend fun doNetworkTwo(): String {
+        delay(600)
+        return "doNetworkTwo"
+    }
+
+    private suspend fun doNetworkThree(): String {
+        delay(900)
+        return "doNetworkThree"
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

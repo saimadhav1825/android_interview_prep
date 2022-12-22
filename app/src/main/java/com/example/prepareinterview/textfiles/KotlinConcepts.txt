@@ -1,0 +1,143 @@
+Types of scope functions
+There are five types of scope functions:
+
+let
+run
+with
+apply
+also
+
+
+Function         Object ReferenceReturn              Value
+
+let                   it                           Lambda result
+ 
+run                  this                          Lambda result
+
+with                 this                          Lambda result
+
+apply                this                          Context object
+ 
+also                  it                           Context object
+
+1. let function
+let function is often used to provide null safety calls. Use safe call operator(?.) with ‘let’ for null safety. It executes the block only with the non-null value.
+let it will return data if we give any data at end of the let
+
+ var leta: String? = null
+    println(leta)
+    leta = ""
+    val out = leta?.let {
+        println(it)
+        "let"
+    }
+    println(out)
+	
+2.apply function
+As the name implies – “Apply these to the object”. It can be used to operate on members of the receiver object mostly to initialize members.
+apply it will return the apply object
+
+fun applyScope() {
+    val apply=MyObject().apply {
+        name="sai"
+        value="hdciu"
+    }
+    println(apply)
+}
+
+3. with function
+Recommended use of ‘with’ for calling functions on context objects without providing the lambda result.
+
+fun withScope(){
+    val gfg = MyObject().apply {
+        name = "GeeksforGeeks"
+        value = "A computer science portal for Geeks"
+    }
+
+    // with function
+    val  with=with(gfg) {
+        // similar to println( "${this.name}" )
+        println(" $name ")
+        "dbcjk"
+    }
+    println(with)
+}
+
+4. run function
+
+‘run’ function can be said as the combination of ‘let’ and ‘with’ functions.
+Used when the object lambda contains both initialization and the computation of the return value.  Using run we can perform null safety calls as well as other computations.
+fun runScope(){
+    var company: MyObject? = null
+    // body only executes if
+    // company is non-null
+    company?.run {
+        print(name)
+    }
+    print("Company Name : ")
+    // re-initialize company
+    company = MyObject().apply {
+        name = "GeeksforGeeks"
+        value = "Sandeep Jain"
+    }
+    // body executes as
+    // 'company' is non-null
+    val s=company?.run {
+        print(name)
+        "ouiegc"
+    }
+    println(s)
+}
+5. also function
+It is used where we have to perform additional operations when we have initialized the object members.
+
+ fun alsoScope() {
+    // initialized
+    val list = mutableListOf(1, 2, 3)
+
+    // later if we want to perform
+    // multiple operations on this list
+    list.also {
+        it.add(4)
+        it.remove(2)
+        // more operations if needed
+    }
+    println(list)
+}
+
+Kotlin Nested class and Inner class
+Nested class
+Nested class can’t access the members of the outer class, but we can access the property of nested class from the outer class without creating an object for nested class.
+In Kotlin, to access the member function of nested class, we need to create the object for nested class and call the member function using it.
+
+class MainClass{
+    var name:String=""
+    class nestedClass{
+        var nameof:String="nestedClass"
+        fun nestMethod(){
+         println(nameof)
+        }
+    }
+}
+fun main(array: Array<String>){
+    val mainClass=MainClass.nestedClass()
+    mainClass.nestMethod()
+}
+Inner class
+When we can declare a class inside another class using the keyword inner then it is called inner class. 
+With the help of the inner class, we can access the outer class property inside the inner class.
+
+class MainClassOf{
+    var name:String="MainClassOf"
+    inner class innerClass{
+        var nameof:String="innerClass"
+        fun innerMethod(){
+            println(name)
+            println(nameof)
+        }
+    }
+} 
+
+
+ val mainClassOf=MainClassOf().innerClass()
+    mainClassOf.innerMethod()

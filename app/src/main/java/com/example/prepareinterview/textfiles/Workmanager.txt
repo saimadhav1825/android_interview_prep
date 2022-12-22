@@ -1,0 +1,35 @@
+----------------------------------WorkManager--------------------------------------
+Android WorkManager can be a perfect background processing library to use when your task –
+
+1. Does not need to run at a specific time
+
+2. Can be deferred to be executed
+
+3. Is guaranteed to run even after the app is killed or device is restarted
+
+4. Has to meet constraints like battery supply or network availability before execution
+
+we can use for long running operation or task 
+we can run parallel task in workManager like beginwith() and then() method one after another
+WorkManager has four states
+1.Blocked
+2.Enqueued
+3.Running
+4.Succeeded
+
+Constraints used to set the workmanager work like 
+ex:Constraints.Builder().setRequiresCharging(false)
+            .setRequiredNetworkType(NetworkType.CONNECTED).build()
+			
+Data is ued to send data from any class like fragment or activity to workmanager and retrieve data from workmanager
+Data.Builder().putInt(SampleWorkManager.KEY_COUNT, 100000).build()
+  val out = inputData.getString(KEY_COUNT)
+  
+Peroiodic Request
+we can call workmanager again and again using peroidic request,minimum time 15 minutes
+
+  val periodicWorkRequest =
+            PeriodicWorkRequest.Builder(SampleWorkManager::class.java, 16, TimeUnit.MINUTES)
+                .build()
+        val workManager = WorkManager.getInstance(requireContext())
+        workManager.enqueue(periodicWorkRequest)

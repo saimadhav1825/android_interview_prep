@@ -45,79 +45,12 @@ class DashboardFragment : Fragment() {
         textView.setOnClickListener {
             findNavController().navigate(R.id.navigation_dashboard_to_navigation_service)
         }
-        /* GlobalScope.launch {
-             delay(3000L)
-             val networ1=network1()
-             val networ2=network2()
-             Log.d(TAG,"Which Theard ${Thread.currentThread().name}")
-             Log.d(TAG,"Which Theard ${networ1}")
-             Log.d(TAG,"Which Theard ${networ2}")
-         }
-         GlobalScope.launch(Dispatchers.IO) {
-             val network1=network1()
-             Log.d(TAG,"Which Theard ${Thread.currentThread().name}")
-             withContext(Dispatchers.Main){
-                 Log.d(TAG,"Which Theard ${Thread.currentThread().name}")
-                 textView.text = network1
-             }
-         }*/
-        Log.d(TAG, "Before ")
-
-        /* runBlocking {
-             launch(Dispatchers.IO) {
-                 delay(2000L)
-                 Log.d(TAG,"launch 1 ")
-             }
-
-             launch(Dispatchers.IO){
-                 delay(2000L)
-                 Log.d(TAG,"launch 2 ")
-             }
-
-             delay(3000L)
-             Log.d(TAG,"In between ${Thread.currentThread().name}")
-         }*/
-/*
-
-        GlobalScope.launch {
-            val time= measureTimeMillis {
-                val one = async { network1() }
-                val two = async { network2() }
-                Log.d(TAG, one.await())
-                Log.d(TAG, two.await())
-            }
-            Log.d(TAG,time.toString())
-
-            launch {
-                delay(2000L)
-                val one = network1()
-                Log.d(TAG, one)
-            }
-
-            launch {
-                delay(4000L)
-                val two =network2()
-                Log.d(TAG, two)
-            }
-        }
-*/
-
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    suspend fun network1(): String {
-        delay(3000L)
-        return "Network1"
-    }
-
-    suspend fun network2(): String {
-        delay(6000L)
-        return "Network2"
     }
 }
 

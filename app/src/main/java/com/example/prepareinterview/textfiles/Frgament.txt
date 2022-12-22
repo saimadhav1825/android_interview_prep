@@ -1,0 +1,71 @@
+-Fragment
+Android Fragment is the part of activity, it is also known as sub-activity. There can be more than one fragment in an activity. 
+Fragments represent multiple screen inside one activity.
+
+-fragment life cycle
+onAttach() event
+onCreate() event
+onCreateView() event
+onViewCreated() event
+onStart() event
+onPause() event
+onStop() event
+onResume() event
+onDestroyView() event
+onDestroy() event
+onDetach() event
+
+when frgament called these methods will call or backpress same methods will call
+onAttach() event
+onCreate() event
+onCreateView() event
+onViewCreated() event
+onStart() event
+onResume() event
+
+when other frgament called these methods will call
+onPause() event
+onStop() event
+onDestroyView() event
+onDestroy() event
+onDetach() event
+
+
+Onscreen Orientation these method will call
+like if we orienate from proitate to landscape 
+onPause() event
+onStop() event
+onSaveInstanceState() event
+onDestroyView() event
+onDestroy() event
+onDetach() event
+onAttach() event
+onCreate() event
+onCreateView() event
+onViewCreated() event
+onStart() event
+onResume() event
+
+if app when to recent state these method will call
+onPause() event
+onStop() event
+onSaveInstanceState() event
+
+
+when open app from recent state
+onStart() event
+onResume() event
+
+
+popupInclusive="true" means it will clear fragment or fragments from which fragment need to clear
+popupto="id/B"
+for example :we have five fragments
+
+A->B->C->D->E
+
+if we want to clear sum fragments in that scenario's 
+we need to mention from which fragment we need to add that fragment id in naviation graph
+in action
+popupInclusive="true" 
+popupto="id/B"
+

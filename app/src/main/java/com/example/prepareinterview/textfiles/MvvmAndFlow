@@ -1,0 +1,34 @@
+MvvM architecure:
+Two-way Data Binding :
+Two-way Data Binding is a technique of binding your objects to your XML layouts such that the Object and the layout can both send data to each other.
+
+	
+	1.LiveData;
+	.live data is a life cycle aware
+	.the data will save if screen rotate also same data will display
+	example like if we click increase count to 10 when clicking button 10 times the data we will store in observer if screen rotate the the updated count will display when happen
+	3.set value() we cannot in background thread,we can use in main thread
+	4.post value() we can use in background thread 
+	5.we can use set value,post value in corotinues
+	6. intial it will call observer
+	
+	2.State Flow
+	.same like live data
+	.flow need to call only in corotinues
+	.intial it will call collect method
+	
+	3 Flow
+	.flow need to call only in corotinues
+	.the value will clear if screen orientation will happen and value set to initial
+	.the state will not store
+	.initial it will not trigger collect method
+	shared flow will emit data only if we call
+	on screen orientation it will not emit and value indside share flow will clear
+	
+	4.Shared Flow
+	.flow need to call only in corotinues
+	.the value will clear if screen orientation will happen and value set to initial
+	.the state will not store
+	
+	shared flow will emit data only if we call
+	on screen orientation it will not emit and value indside share flow will clear
