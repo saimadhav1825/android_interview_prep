@@ -19,7 +19,7 @@ class BaseApplicationClass : Application() {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         instance = this
-        initFirebaseMessagingService()
+       // initFirebaseMessagingService()
     }
 
     companion object {

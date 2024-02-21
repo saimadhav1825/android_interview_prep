@@ -1,3 +1,7 @@
+import android.util.Log
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 //You can run many coroutines on a single thread due to support for suspension, which doesn't block the thread where the coroutine is running.
 // Suspending saves memory over blocking while supporting many concurrent operations.
 
@@ -12,7 +16,14 @@
 //
 //The suspending functions are only allowed to be called from a coroutine or from another suspending function.
 
-fun main(){
+fun main() {
+    val TAG = "Coroutine"
+    GlobalScope.launch {
+        Log.d(TAG, "GlobalScope ${Thread.currentThread().name}")
+
+    }
+
+    Log.d(TAG, "GlobalScope ${Thread.currentThread().name}")
 
 }
 
