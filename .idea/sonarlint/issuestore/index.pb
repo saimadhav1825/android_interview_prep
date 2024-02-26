@@ -57,11 +57,11 @@ Yapp/src/main/java/com/example/prepareinterview/kotlinpractices/CrossLineNoInlin
 Sapp/src/main/java/com/example/prepareinterview/kotlinpractices/DataTypesExamples.kt,3/c/3c8a8e545b3ae8a3edabf288ceaee8a5605741de
 n
 >app/src/main/java/com/example/prepareinterview/MainActivity.kt,1/1/113f840770d1201ca4e79d358c930dc2f3201ecd
-p
-@app/src/main/java/com/example/prepareinterview/SampleActivity.kt,1/5/15629542514dcf897d06d5180e5595e38e2b1e99
 }
 Mapp/src/main/java/com/example/prepareinterview/textfiles/PushNotification.txt,0/3/031e022f7abbe5aaf55330cc4d78c67853c360ec
 y
 Iapp/src/main/java/com/example/prepareinterview/ui/BaseApplicationClass.kt,5/b/5b97cc7d0ea76ec4dee7abfc437cc55f16e243e9
 ‰
 Yapp/src/main/java/com/example/prepareinterview/kotlinpractices/CoroutineSampleActivity.kt,d/9/d94c558da1f3550fb832a19e61bbc4118310be28
+„
+Tapp/src/main/java/com/example/prepareinterview/kotlinpractices/CoroutineViewModel.kt,8/8/88215a325b70f47e82300cbc73e6990a4c73f232

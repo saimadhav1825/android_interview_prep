@@ -14,10 +14,26 @@
             android:id="@+id/textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="70sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/textview" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="button"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="70sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

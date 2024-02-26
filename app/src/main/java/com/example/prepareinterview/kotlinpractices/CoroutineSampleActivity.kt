@@ -2,13 +2,16 @@ package com.example.prepareinterview.kotlinpractices
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.prepareinterview.databinding.SampleActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.system.measureTimeMillis
@@ -17,6 +20,7 @@ import kotlin.system.measureTimeMillis
 class SampleActivity : AppCompatActivity() {
     var TAG = "SampleActivity : "
     private lateinit var binding: SampleActivityBinding
+    private val hiltViewModel: CoroutineViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,10 +28,17 @@ class SampleActivity : AppCompatActivity() {
 
         binding = SampleActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        println("Which Main Thread it run ${Thread.currentThread().name}")
 
-        aysncAwait()
-        Log.d(TAG, "GlobalScope main thread${Thread.currentThread().name}")
-
+        lifecycleScope.launch {
+            println("Which Main Thread it run lifecycleScope ${Thread.currentThread().name}")
+            hiltViewModel.count.collectLatest {
+                binding.textview.text = it.toString()
+            }
+        }
+        binding.button.setOnClickListener {
+            hiltViewModel.sampleCount()
+        }
     }
 
 
