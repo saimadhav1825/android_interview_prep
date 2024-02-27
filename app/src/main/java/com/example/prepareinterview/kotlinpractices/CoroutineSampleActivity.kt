@@ -36,9 +36,7 @@ class SampleActivity : AppCompatActivity() {
                 binding.textview.text = it.toString()
             }
         }
-        binding.button.setOnClickListener {
-            hiltViewModel.sampleCount()
-        }
+        runBlocking()
     }
 
 
