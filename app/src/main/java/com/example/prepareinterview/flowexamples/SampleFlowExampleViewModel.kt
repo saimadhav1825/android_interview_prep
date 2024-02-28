@@ -14,9 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SampleFlowExampleViewModel @Inject constructor(
-
-) : ViewModel() {
+class SampleFlowExampleViewModel @Inject constructor() : ViewModel() {
     //State Flow
     private val _count = MutableStateFlow(0)
     val count = _count.asStateFlow()
