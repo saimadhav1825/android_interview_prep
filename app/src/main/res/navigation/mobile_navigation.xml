@@ -37,6 +37,12 @@
             app:destination="@id/navigation_service" />
     </fragment>
     <fragment
+        android:id="@+id/navigation_broadcast"
+        android:name="com.example.prepareinterview.broadcastreceiver.BroadCastFragment"
+        android:label="@string/broadcast"
+        tools:layout="@layout/broad_cast_receiver_fragment" />
+
+    <fragment
         android:id="@+id/navigation_service"
         android:name="com.example.prepareinterview.ui.ServicesFragment"
         android:label="Service"

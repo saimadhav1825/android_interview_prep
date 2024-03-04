@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".hiltexample.HiltSampleActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -66,6 +66,16 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+
+        <!-- <receiver
+        static type broad cast receiver
+             android:name=".broadcastreceiver.AirplaneMoodReceiver"
+             android:exported="true">
+             <intent-filter>
+                 <action android:name="android.intent.action.AIRPLANE_MODE" />
+             </intent-filter>
+         </receiver>-->
     </application>
 
 </manifest>

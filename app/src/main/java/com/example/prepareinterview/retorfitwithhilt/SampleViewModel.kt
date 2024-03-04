@@ -16,29 +16,19 @@ class SampleViewModel @Inject constructor(
     private val authRepo: SampleRepo
 ) : ViewModel() {
 
-    val signInData: LiveData<DataState<Response<EmployeeResponse>>>
+    val signInData: LiveData<Int>
         get() = _signInData
 
-    private val _signInData: MutableLiveData<DataState<Response<EmployeeResponse>>> =
+    private val _signInData: MutableLiveData<Int> =
         MutableLiveData()
 
+    fun increaseCount() {
 
-    fun setStateEvent(authStateEvent: AuthStateEvent) {
-        viewModelScope.launch {
-            when (authStateEvent) {
-                is AuthStateEvent.LoginUser -> {
-                    authRepo.getEmployees()
-                        .onEach { dataState ->
-                            _signInData.value = dataState
-                        }
-                        .launchIn(viewModelScope)
-                }
-                is AuthStateEvent.None -> {
-                    //DO nothing
-                }
-            }
-        }
+    }
 
+    override fun onCleared() {
+        super.onCleared()
+        println("SampleViewModel")
     }
 }
 

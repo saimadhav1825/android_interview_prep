@@ -7,8 +7,7 @@ import android.widget.Toast
 
 class AirplaneMoodReceiver : BroadcastReceiver() {
     override fun onReceive(p0: Context?, p1: Intent?) {
-        val isAirplaneModeEnabled = p1?.getBooleanExtra("state", false) ?: return
-        if (isAirplaneModeEnabled) {
+        if (p1?.action == Intent.ACTION_AIRPLANE_MODE_CHANGED) {
             Toast.makeText(p0, "Airplane Mode Enabled", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(p0, "Airplane Mode Disabled", Toast.LENGTH_LONG).show()
